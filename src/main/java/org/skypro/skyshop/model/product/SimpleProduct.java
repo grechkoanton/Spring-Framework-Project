@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class SimpleProduct extends Product {
-    private int price;
+    private final int price;
 
     public SimpleProduct(UUID id, String name, int price) {
         super(id, name);
@@ -39,26 +39,7 @@ public class SimpleProduct extends Product {
 
     @Override
     public String toString() {
-        return "Название товара: " + name + ". Стоимость: " + price + " руб.";
+        return "Название товара: " + getName() + ". Стоимость: " + price + " руб.";
     }
 
-    @Override
-    public String searchTerm() {
-        return super.searchTerm();
-    }
-
-    @Override
-    public String getSearchTypContent() {
-        return super.getSearchTypContent();
-    }
-
-    @Override
-    public String getNameSearchable() {
-        return super.getNameSearchable();
-    }
-
-    @Override
-    public String getStringRepresentation() {
-        return super.getStringRepresentation();
-    }
 }
