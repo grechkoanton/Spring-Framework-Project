@@ -7,10 +7,7 @@ import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.product.SimpleProduct;
 import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,8 +15,10 @@ import java.util.stream.Stream;
 public class StorageService {
     private final Map<UUID, Product> productStorage;
     private final Map<UUID, Article> articleStorage;
+    private final Map<UUID, Product> availableProducts; //новое поле
 
-    public StorageService() {
+    public StorageService(Map<UUID, Product> availableProducts) { //передаю его в конструктор
+        this.availableProducts = availableProducts; //передаю его в конструктор
         this.productStorage = new HashMap<>();
         this.articleStorage = new HashMap<>();
         createTestData();
@@ -37,6 +36,10 @@ public class StorageService {
         return Stream.concat(productStorage.values().stream(),
                         articleStorage.values().stream())
                 .collect(Collectors.toList());
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(availableProducts.get(id));
     }
 
     private void createTestData() {
