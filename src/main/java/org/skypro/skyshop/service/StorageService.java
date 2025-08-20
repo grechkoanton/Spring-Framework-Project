@@ -15,13 +15,15 @@ import java.util.stream.Stream;
 public class StorageService {
     private final Map<UUID, Product> productStorage;
     private final Map<UUID, Article> articleStorage;
-    private final Map<UUID, Product> availableProducts; //новое поле
+    private final Map<UUID, Product> availableProducts;
 
-    public StorageService(Map<UUID, Product> availableProducts) { //передаю его в конструктор
-        this.availableProducts = availableProducts; //передаю его в конструктор
+    public StorageService() {
+
         this.productStorage = new HashMap<>();
         this.articleStorage = new HashMap<>();
         createTestData();
+        this.availableProducts = new HashMap<>();
+        this.availableProducts.putAll(productStorage);
     }
 
     public Collection<Product> getProducts() {

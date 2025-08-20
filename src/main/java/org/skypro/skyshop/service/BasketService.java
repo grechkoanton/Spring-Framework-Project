@@ -22,7 +22,7 @@ public class BasketService {
 
     public void addProductToBasket(UUID id) {
         if (id == null) {
-            throw new IllegalArgumentException("ID товара не может быть null");
+            throw new IllegalArgumentException(id + "ID  товара не может быть null");
         }
         storageService.getProductById(id)
                 .ifPresentOrElse(
