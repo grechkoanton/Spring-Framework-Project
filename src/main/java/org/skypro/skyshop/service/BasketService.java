@@ -29,7 +29,7 @@ public class BasketService {
                 .ifPresentOrElse(
                         product -> productBasket.addProductToBasket(id),
                         () -> {
-                            throw new NoSuchProductException("!!!_ОШИБКА_!!! Товар " + id + " не найден");
+                            throw new NoSuchProductException("!!!_ОШИБКА_!!! Товар с ID: " + id + " не найден");
                         }
                 );
     }
