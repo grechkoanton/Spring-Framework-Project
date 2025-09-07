@@ -16,4 +16,6 @@ public class SearchResult {
                 searchable.getNameSearchable(),
                 searchable.getSearchTypContent());
     }
+
+
 }
